@@ -1065,7 +1065,8 @@ p {
     display: grid;
     grid-template-columns: 45% 55%;
     gap: 5rem;
-    align-items: center;
+    /* Top-align content with the image stack on desktop */
+    align-items: start;
 }
 
 /* About Images */
@@ -1167,9 +1168,23 @@ p {
 }
 
 .about__feature {
+    /* Glass USP card */
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    padding: 1rem 1rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(26, 77, 46, 0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.about__feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.08);
 }
 
 .about__feature-icon {
@@ -1178,7 +1193,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-primary-pale);
+    background: rgba(124, 179, 66, 0.18);
     border-radius: 50%;
     flex-shrink: 0;
 }
