@@ -1106,6 +1106,8 @@ p {
     bottom: 30px;
     left: 0;
     transform: rotate(-3deg);
+    /* Match the white outline used on the secondary image */
+    border: 8px solid var(--color-white);
 }
 
 .about__image--secondary {
@@ -2646,6 +2648,15 @@ a.contact__info-item:hover .contact__info-value {
     .about__content {
         order: 2;
     }
+
+    /* Center the About section badge/content on tablet/mobile layouts */
+    .about__content {
+        text-align: center;
+    }
+
+    .about__features {
+        justify-items: center;
+    }
     
     /* Gallery */
     .gallery__grid {
@@ -2670,6 +2681,15 @@ a.contact__info-item:hover .contact__info-value {
     .contact__container {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    /* Center + slightly narrow the form and info card on mobile */
+    .contact__form,
+    .contact__info-card {
+        width: 100%;
+        max-width: 560px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     /* Footer */
