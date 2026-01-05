@@ -626,7 +626,7 @@ p {
         border: 0 !important;
         box-shadow: none !important;
         padding: 0 !important;
-        gap: 2.25rem !important;
+        gap: 1.4rem !important
     }
 
     .nav__link::after {
@@ -2664,6 +2664,11 @@ a.contact__info-item:hover .contact__info-value {
     .about__features {
         justify-items: center;
     }
+
+    /* Mobile/tablet: keep USP cards a consistent width (no variable shrink-to-content) */
+    .about__feature {
+        width: min(100%, 520px);
+    }
     
     /* Gallery */
     .gallery__grid {
@@ -2979,6 +2984,9 @@ a.contact__info-item:hover .contact__info-value {
     }
     
     /* About */
+    .about__feature {
+        width: min(100%, 360px);
+    }
     .about__images {
         min-height: 350px;
     }
