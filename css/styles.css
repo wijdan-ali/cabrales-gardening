@@ -421,8 +421,9 @@ p {
 }
 
 .nav__logo-text {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    justify-items: start;
+    line-height: 1.05;
 }
 
 .nav__logo-name {
@@ -431,6 +432,7 @@ p {
     font-weight: 700;
     color: var(--color-primary-dark);
     line-height: 1;
+    text-align: left;
 }
 
 .nav__logo-tagline {
@@ -439,6 +441,8 @@ p {
     font-weight: 400;
     color: var(--color-primary-light);
     letter-spacing: 2px;
+    text-align: left;
+    margin-top: 0.125rem;
 }
 
 /* Navigation Menu */
@@ -446,6 +450,53 @@ p {
     display: flex;
     align-items: center;
     gap: 2.25rem;
+}
+
+/* Actions (Phone + CTA) */
+.nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.9rem;
+    border-radius: var(--radius-full);
+    background: rgba(124, 179, 66, 0.12);
+    border: 1px solid rgba(124, 179, 66, 0.35);
+    color: var(--color-primary);
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    transition: all var(--transition-smooth);
+}
+
+.nav__phone:hover {
+    background: rgba(124, 179, 66, 0.18);
+    transform: translateY(-1px);
+}
+
+.nav__phone-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(124, 179, 66, 0.18);
+    color: var(--color-primary-dark);
+}
+
+.nav__phone-icon svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.nav__phone-text {
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
 }
 
 .nav__link {
@@ -490,6 +541,8 @@ p {
 /* CTA Button */
 .nav__cta {
     padding: 0.875rem 2rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 10px 24px rgba(124, 179, 66, 0.22);
 }
 
 .nav__cta svg {
@@ -506,6 +559,36 @@ p {
     width: 30px;
     height: 30px;
     padding: 0;
+}
+
+/* Force desktop nav layout (prevents mobile menu styles leaking at large widths) */
+@media (min-width: 1024px) {
+    .nav__toggle {
+        display: none !important;
+    }
+
+    .nav__cta {
+        display: inline-flex !important;
+    }
+
+    .nav__menu {
+        position: static !important;
+        right: auto !important;
+        top: auto !important;
+        width: auto !important;
+        height: auto !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        gap: 2.25rem !important;
+    }
+
+    .nav__link::after {
+        display: block !important;
+    }
 }
 
 .nav__toggle-line {
@@ -594,7 +677,7 @@ p {
     gap: 4rem;
     align-items: center;
     min-height: 100vh;
-    padding-top: 140px;
+    padding-top: 180px;
     padding-bottom: 100px;
 }
 
@@ -1823,18 +1906,7 @@ a.contact__info-item:hover .contact__info-value {
     box-shadow: var(--shadow-green);
 }
 
-/* Contact Map */
-.contact__map {
-    height: 350px;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-}
-
-.contact__map iframe {
-    width: 100%;
-    height: 100%;
-}
+/* Contact Map removed */
 
 /* ============================================
    17. FOOTER
@@ -2378,6 +2450,10 @@ a.contact__info-item:hover .contact__info-value {
     .nav__cta {
         display: none;
     }
+
+    .nav__phone-text {
+        display: none;
+    }
     
     .nav__toggle {
         display: flex;
@@ -2387,7 +2463,7 @@ a.contact__info-item:hover .contact__info-value {
     .hero__container {
         grid-template-columns: 1fr;
         text-align: center;
-        padding-top: 140px;
+        padding-top: 170px;
     }
     
     .hero__content {
@@ -2666,7 +2742,7 @@ a.contact__info-item:hover .contact__info-value {
     
     /* Hero */
     .hero__container {
-        padding-top: 100px;
+        padding-top: 120px;
         padding-bottom: 80px;
     }
     

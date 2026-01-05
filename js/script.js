@@ -230,7 +230,9 @@ const ScrollEffects = {
             
             if (target) {
                 const headerHeight = DOM.header?.offsetHeight || 0;
-                const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+                const headerTop = DOM.header ? (parseFloat(getComputedStyle(DOM.header).top) || 0) : 0;
+                const targetPosition =
+                    target.getBoundingClientRect().top + window.scrollY - headerHeight - headerTop;
                 
                 window.scrollTo({
                     top: targetPosition,
