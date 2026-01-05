@@ -2690,13 +2690,44 @@ a.contact__info-item:hover .contact__info-value {
         gap: 3rem;
     }
 
-    /* Center + slightly narrow the form and info card on mobile */
+    /* Contact: make cards slightly smaller and centered */
+    .contact__form-header {
+        text-align: center;
+    }
+
     .contact__form,
     .contact__info-card {
-        width: 100%;
-        max-width: 560px;
+        width: min(100%, 420px);
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .contact__form {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .contact__info-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    /* Ensure long values (email/address) wrap instead of forcing overflow */
+    .contact__info-details {
+        min-width: 0;
+    }
+
+    .contact__info-value {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .contact__info-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .contact__info-icon svg {
+        width: 1.25rem;
+        height: 1.25rem;
     }
     
     /* Footer */
@@ -3019,6 +3050,11 @@ a.contact__info-item:hover .contact__info-value {
     /* Contact */
     .contact__info-title {
         font-size: 1.5rem;
+    }
+
+    .contact__form,
+    .contact__info-card {
+        width: min(100%, 360px);
     }
     
     .contact__info-card {
