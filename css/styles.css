@@ -157,13 +157,13 @@ body::before {
     z-index: -1;
     pointer-events: none;
     background:
-        radial-gradient(420px 420px at 12% 18%, rgba(124, 179, 66, 0.20) 0%, rgba(124, 179, 66, 0) 70%),
-        radial-gradient(520px 520px at 88% 22%, rgba(124, 179, 66, 0.16) 0%, rgba(124, 179, 66, 0) 72%),
-        radial-gradient(560px 560px at 22% 78%, rgba(26, 77, 46, 0.10) 0%, rgba(26, 77, 46, 0) 74%),
-        radial-gradient(680px 680px at 78% 86%, rgba(124, 179, 66, 0.14) 0%, rgba(124, 179, 66, 0) 76%),
-        radial-gradient(420px 420px at 50% 52%, rgba(197, 225, 165, 0.12) 0%, rgba(197, 225, 165, 0) 70%);
-    filter: blur(18px);
-    opacity: 0.9;
+        radial-gradient(420px 420px at 12% 18%, rgba(124, 179, 66, 0.26) 0%, rgba(124, 179, 66, 0) 70%),
+        radial-gradient(520px 520px at 88% 22%, rgba(124, 179, 66, 0.21) 0%, rgba(124, 179, 66, 0) 72%),
+        radial-gradient(560px 560px at 22% 78%, rgba(26, 77, 46, 0.14) 0%, rgba(26, 77, 46, 0) 74%),
+        radial-gradient(680px 680px at 78% 86%, rgba(124, 179, 66, 0.19) 0%, rgba(124, 179, 66, 0) 76%),
+        radial-gradient(420px 420px at 50% 52%, rgba(197, 225, 165, 0.16) 0%, rgba(197, 225, 165, 0) 70%);
+    filter: blur(16px);
+    opacity: 0.85;
     transform: translateZ(0);
 }
 
@@ -1335,7 +1335,10 @@ p {
    14. TESTIMONIALS SECTION
    ============================================ */
 .testimonials {
-    background: var(--color-primary-dark);
+    background:
+        radial-gradient(900px 520px at 15% 0%, rgba(124, 179, 66, 0.18) 0%, rgba(124, 179, 66, 0) 60%),
+        radial-gradient(780px 520px at 90% 85%, rgba(197, 225, 165, 0.10) 0%, rgba(197, 225, 165, 0) 65%),
+        linear-gradient(135deg, #123b24 0%, #1a4d2e 45%, #0f2f1d 100%);
     padding: 5rem 0;
     /* Keep the marquee/cards clipped horizontally, but allow hover-scale to overflow vertically */
     overflow-x: hidden;
@@ -1841,7 +1844,10 @@ p {
 }
 
 .contact__info-card {
-    background: var(--color-primary-dark);
+    background:
+        radial-gradient(680px 420px at 20% 0%, rgba(124, 179, 66, 0.20) 0%, rgba(124, 179, 66, 0) 60%),
+        radial-gradient(640px 420px at 90% 95%, rgba(197, 225, 165, 0.10) 0%, rgba(197, 225, 165, 0) 68%),
+        linear-gradient(140deg, #123b24 0%, #1a4d2e 55%, #10341f 100%);
     padding: 3rem 2.5rem;
     border-radius: var(--radius-md);
     color: var(--color-white);
@@ -1975,7 +1981,10 @@ a.contact__info-item:hover .contact__info-value {
    17. FOOTER
    ============================================ */
 .footer {
-    background: var(--color-primary-dark);
+    background:
+        radial-gradient(1000px 560px at 18% 0%, rgba(124, 179, 66, 0.14) 0%, rgba(124, 179, 66, 0) 62%),
+        radial-gradient(900px 560px at 88% 85%, rgba(197, 225, 165, 0.08) 0%, rgba(197, 225, 165, 0) 66%),
+        linear-gradient(135deg, #123b24 0%, #1a4d2e 45%, #0f2f1d 100%);
     color: var(--color-white);
 }
 
