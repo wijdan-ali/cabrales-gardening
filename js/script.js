@@ -127,26 +127,77 @@ const Navigation = {
     },
     
     setupScrollSpy() {
-        const sections = document.querySelectorAll('section[id]');
-        
+        // Only track sections that are represented in the nav.
+        // This prevents "sticky" highlights when the user scrolls into sections
+        // that don't have a nav link (e.g., Blog, Contact, etc.).
+        const navSectionIds = Array.from(DOM.navLinks)
+            .map(link => link.getAttribute('href'))
+            .filter(href => typeof href === 'string' && href.startsWith('#') && href.length > 1)
+            .map(href => href.substring(1));
+
+        const sections = navSectionIds
+            .map(id => document.getElementById(id))
+            .filter(Boolean);
+
         const observerOptions = {
             root: null,
             rootMargin: '-50% 0px -50% 0px',
             threshold: 0
         };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    const activeLink = document.querySelector(`.nav__link[href="#${id}"]`);
-                    if (activeLink) {
-                        this.setActiveLink(activeLink);
-                    }
+
+        const intersectingIds = new Set();
+
+        const clearActiveLink = () => {
+            DOM.navLinks.forEach(link => link.classList.remove('nav__link--active'));
+        };
+
+        const getBestVisibleSectionId = () => {
+            if (intersectingIds.size === 0) return null;
+
+            let bestId = null;
+            let bestScore = Number.POSITIVE_INFINITY;
+
+            intersectingIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const rect = el.getBoundingClientRect();
+                const score = Math.abs(rect.top);
+
+                if (score < bestScore) {
+                    bestScore = score;
+                    bestId = id;
                 }
             });
+
+            return bestId;
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                if (!id) return;
+
+                if (entry.isIntersecting) {
+                    intersectingIds.add(id);
+                } else {
+                    intersectingIds.delete(id);
+                }
+            });
+
+            const bestId = getBestVisibleSectionId();
+            if (!bestId) {
+                clearActiveLink();
+                return;
+            }
+
+            const activeLink = document.querySelector(`.nav__link[href="#${bestId}"]`);
+            if (activeLink) {
+                this.setActiveLink(activeLink);
+            } else {
+                clearActiveLink();
+            }
         }, observerOptions);
-        
+
         sections.forEach(section => observer.observe(section));
     }
 };
@@ -499,6 +550,8 @@ const Testimonials = {
 // 8. FORM VALIDATION
 // ============================================
 const FormValidation = {
+    hasAttemptedSubmit: false,
+
     init() {
         if (!DOM.contactForm) return;
         
@@ -507,12 +560,16 @@ const FormValidation = {
         
         // Form submission
         DOM.contactForm.addEventListener('submit', (e) => this.handleSubmit(e));
-        
-        // Real-time validation
+        // Validation UI should not appear until the user attempts to submit the form.
+        // After the first submit attempt, we validate live while they correct fields.
         const inputs = DOM.contactForm.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
-            input.addEventListener('blur', () => this.validateField(input));
+            input.addEventListener('blur', () => {
+                if (!this.hasAttemptedSubmit) return;
+                this.validateField(input);
+            });
             input.addEventListener('input', () => {
+                if (!this.hasAttemptedSubmit) return;
                 if (input.parentElement.classList.contains('form-group--error')) {
                     this.validateField(input);
                 }
@@ -618,6 +675,8 @@ const FormValidation = {
     
     handleSubmit(e) {
         e.preventDefault();
+
+        this.hasAttemptedSubmit = true;
         
         const form = e.target;
         const inputs = form.querySelectorAll('input, textarea, select');
