@@ -702,6 +702,13 @@ p {
     background-attachment: fixed;
 }
 
+/* Mobile Safari fix: `background-attachment: fixed` is unreliable on iOS and can render as blank */
+@media (hover: none) and (pointer: coarse) {
+    .hero__background {
+        background-attachment: scroll;
+    }
+}
+
 .hero__overlay {
     position: absolute;
     top: 0;
