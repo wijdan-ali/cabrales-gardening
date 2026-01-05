@@ -1641,6 +1641,92 @@ p {
 }
 
 /* ============================================
+   15A. BLOG POST PAGE
+   ============================================ */
+.blog-post {
+    background: transparent;
+    padding: var(--spacing-3xl) 0;
+}
+
+.blog-post__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.blog-post__cover {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.blog-post__cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.blog-post__content {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.blog-post__meta {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(26, 77, 46, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    padding: 0.5rem 0.9rem;
+    display: inline-block;
+    margin-bottom: var(--spacing-md);
+}
+
+.blog-post__content h1 {
+    margin-bottom: var(--spacing-md);
+}
+
+.blog-post__content h2 {
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.blog-post__content h3 {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-xs);
+}
+
+.blog-post__content p {
+    margin-bottom: var(--spacing-md);
+}
+
+.blog-post__content ul {
+    margin: 0 0 var(--spacing-md) 1.25rem;
+    list-style: disc;
+}
+
+.blog-post__content li {
+    margin-bottom: 0.5rem;
+}
+
+.blog-post__content a {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.blog-post__content a:hover {
+    color: var(--color-primary-light);
+}
+
+.blog-post__cta {
+    background: var(--color-primary-pale);
+    border: 1px solid rgba(26, 77, 46, 0.12);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+}
+
+/* ============================================
    16. CONTACT SECTION
    ============================================ */
 .contact {
