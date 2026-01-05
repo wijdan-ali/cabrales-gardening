@@ -757,6 +757,27 @@ p {
     color: var(--color-primary-light);
 }
 
+/* Blog page hero: keep hero background, but center the "Your Source..." header content */
+.hero--blog .hero__container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+}
+
+.hero--blog .hero__content {
+    max-width: 900px;
+}
+
+.hero--blog .hero__badge {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero--blog .hero__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .hero__title {
     font-size: var(--fs-hero);
     font-weight: 800;
