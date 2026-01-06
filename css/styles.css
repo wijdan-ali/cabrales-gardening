@@ -1645,7 +1645,9 @@ p {
    ============================================ */
 .blog-post {
     background: transparent;
-    padding: var(--spacing-3xl) 0;
+    /* Add top clearance so content (especially the cover image) never sits under the fixed header */
+    --blog-header-clearance: 180px;
+    padding: calc(var(--spacing-3xl) + var(--blog-header-clearance)) 0 var(--spacing-3xl);
 }
 
 .blog-post__container {
@@ -1659,6 +1661,10 @@ p {
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     margin-bottom: var(--spacing-xl);
+    /* Slightly smaller, centered cover on desktop for better composition */
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .blog-post__cover img {
@@ -1710,20 +1716,80 @@ p {
     margin-bottom: 0.5rem;
 }
 
-.blog-post__content a {
+.blog-post__content a:not(.btn) {
     color: var(--color-primary);
     font-weight: 600;
 }
 
-.blog-post__content a:hover {
+.blog-post__content a:not(.btn):hover {
     color: var(--color-primary-light);
 }
 
 .blog-post__cta {
-    background: var(--color-primary-pale);
-    border: 1px solid rgba(26, 77, 46, 0.12);
+    background: var(--color-white);
+    border: 1px solid rgba(26, 77, 46, 0.14);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    max-width: 980px;
+    margin: var(--spacing-xl) auto 0;
+}
+
+.blog-post__cta-icon {
+    width: 3rem;
+    height: 3rem;
     border-radius: var(--radius-md);
-    padding: var(--spacing-md);
+    display: grid;
+    place-items: center;
+    background: rgba(26, 77, 46, 0.08);
+    border: 1px solid rgba(26, 77, 46, 0.12);
+    color: var(--color-primary);
+}
+
+.blog-post__cta-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.blog-post__cta-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin: 0 0 var(--spacing-sm);
+    color: var(--color-heading);
+}
+
+.blog-post__cta-caption {
+    margin: 0 auto var(--spacing-lg);
+    color: var(--color-text);
+    max-width: 54ch;
+    font-size: 1.125rem;
+}
+
+.blog-post__cta-points {
+    margin: 0 0 var(--spacing-md) 1.25rem;
+    list-style: disc;
+}
+
+.blog-post__cta .btn {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 767px) {
+    .blog-post__cta-caption {
+        font-size: 1rem;
+    }
+
+    .blog-post {
+        --blog-header-clearance: 150px;
+    }
+}
+
+@media (max-width: 479px) {
+    .blog-post {
+        --blog-header-clearance: 135px;
+    }
 }
 
 /* ============================================
